@@ -49,6 +49,7 @@ dependencies:
   internet_connection_checker:
 
 dev_dependencies:
+  build_runner:
   flutter_test:
     sdk: flutter
 

@@ -1,3 +1,3 @@
-const SERVER_FAILURE_MESSAGE = 'Server Failure';
-const EMPTY_CACHE_FAILURE_MESSAGE = 'Cache Failure';
-const OFFLINE_FAILURE_MESSAGE = 'Offline Failure';
+const serverFailureMessage = 'Server Failure';
+const emptyCacheFailureMessage = 'Cache Failure';
+const networkFailureMessage = 'Offline Failure';
