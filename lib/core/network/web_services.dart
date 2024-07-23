@@ -1,23 +1,43 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:popular_people/core/di/dependency_injection.dart' as di;
 import 'package:popular_people/core/config/end_points.dart';
+import 'package:popular_people/core/di/dependency_injection.dart' as di;
 import 'package:popular_people/core/handlers/shared_handler.dart';
 
-class Network {
-  static Network? _instance;
+abstract class Network {
+  Future<Response> get(
+    {required String? url,
+      Map<String, dynamic>? query,
+      Map<String, dynamic>? headers,
+      bool withToken = true}
+    /* {Map<String, String> headers} */
+  );
+  Future<dynamic> post(
+      {required String? url,
+      Map<String, dynamic>? body,
+      bool isImageBody = false,
+      FormData? imageBody,
+      Map<String, dynamic>? query,
+      bool withToken = true,
+      Map<String, dynamic>? headers} /* {/* Map<String, String> headers, */ } */);
+  /* Future<dynamic> put(String url, {/* Map<String, String> headers, */ dynamic body});
+  Future<dynamic> delete(String url,/*  {Map<String, String> headers} */); */
+}
+
+class NetworkImpl extends Network{
+  static NetworkImpl? _instance;
   final Dio _dio = Dio();
-  Network._internal();
-  factory Network.init() {
+  NetworkImpl._internal();
+  factory NetworkImpl.init() {
     if (_instance == null) {
-      _instance = Network._internal();
+      _instance = NetworkImpl._internal();
       _instance!._dio.options.baseUrl = ApiEndPoints.baseUrl;
     }
     return _instance!;
   }
-
-  Future<dynamic> get(
+@override
+  Future<Response> get(
       {required String? url,
       Map<String, dynamic>? query,
       Map<String, dynamic>? headers,
@@ -31,7 +51,7 @@ class Network {
           .sl<SharedHandler>()
           .getData(key: SharedKeys().token, valueType: ValueType.string);
       _dio.options.headers = {
-        'authorization': 'Bearer $token',
+        'authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZDM4Y2JkNGFmZDRhOWQ2YWM3ZDQ5MDM4ZDM4NmU3ZSIsIm5iZiI6MTcyMTY2MTg5Mi41NzMwMjIsInN1YiI6IjY0ZjYxNmYzZjI5ZDY2MDBlMzQ0NDg1MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B0LiBIbJcuXi5YefaXbu3GLVrvz4mp7vpoLR2aueVwU',
         'Accept': 'application/json',
         'Accept-Language': "US"
       };
@@ -117,6 +137,7 @@ class Network {
     }
   }
 
+@override
   Future<dynamic> post(
       {required String? url,
       Map<String, dynamic>? body,
