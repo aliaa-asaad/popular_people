@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popular_people/core/di/dependency_injection.dart' as di;
 import 'package:popular_people/core/routing/routes.dart';
+import 'package:popular_people/features/person_details/presentation/view/screens/person_details_screen.dart';
+import 'package:popular_people/features/person_details/presentation/view_model/cubit/person_details_cubit.dart';
 import 'package:popular_people/features/popular_people/presentation/view/screens/popular_people_screen.dart';
 import 'package:popular_people/features/popular_people/presentation/view_model/cubit/popular_people_cubit.dart';
 import 'package:popular_people/test_screen.dart';
@@ -25,6 +27,18 @@ class AppRoutes {
             child: PopularPeopleScreen(),
           ),
         );
+      case Routes.personDetails:
+        return AppRoutes.aniamtedNavigation(
+          screen: BlocProvider<PersonDetailsCubit>(
+            create: (context) => di.sl<PersonDetailsCubit>()
+              ..getPersonDetails(personId: settings.arguments as int),
+            child: PersonDetailsScreen(),
+          ),
+        );
+      /* case Routes.personDetails:
+        return AppRoutes.aniamtedNavigation(
+          screen: const PersonDetailsScreen(),
+        ); */
       case Routes.test:
         return AppRoutes.aniamtedNavigation(
           screen: BlocProvider<PopularPeopleCubit>(
