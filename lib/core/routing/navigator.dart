@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:popular_people/core/di/dependency_injection.dart' as di;
 import 'package:popular_people/core/routing/routes.dart';
 import 'package:popular_people/features/popular_people/presentation/view/screens/popular_people_screen.dart';
+import 'package:popular_people/features/popular_people/presentation/view_model/cubit/popular_people_cubit.dart';
+import 'package:popular_people/test_screen.dart';
 
 class AppRoutes {
   static final GlobalKey<NavigatorState> navigatorState =
@@ -9,11 +13,26 @@ class AppRoutes {
       RouteObserver<PageRoute>();
   static final GlobalKey<ScaffoldMessengerState> scaffoldState =
       GlobalKey<ScaffoldMessengerState>();
+
   static Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.popularPeople:
-        return MaterialPageRoute(builder: (context) => const PopularPeopleScreen());
-  
+        return AppRoutes.aniamtedNavigation(
+          screen: BlocProvider<PopularPeopleCubit>(
+            create: (context) => di.sl<PopularPeopleCubit>()
+            /* ..getPopularPeople() */
+            /*  ..init(), */,
+            child: PopularPeopleScreen(),
+          ),
+        );
+      case Routes.test:
+        return AppRoutes.aniamtedNavigation(
+          screen: BlocProvider<PopularPeopleCubit>(
+            create: (context) =>
+                di.sl<PopularPeopleCubit>()..getPopularPeople(),
+            child: TestScreen(),
+          ),
+        );
       default:
         return AppRoutes.aniamtedNavigation(
             screen: const Scaffold(
