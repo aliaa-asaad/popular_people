@@ -20,23 +20,25 @@ class SelectedImageScreen extends StatelessWidget {
           children: [
             Center(
               child: Image.network(
-                 ApiEndPoints.imageBaseUrl+ imagePath,
-               // fit: BoxFit.fill,
-                
+                ApiEndPoints.imageBaseUrl + imagePath,
+                // fit: BoxFit.fill,
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-                onPressed: () async{
-                 await GallerySaver.saveImage(
-                       ApiEndPoints.imageBaseUrl+imagePath); 
-                      log('Image saved');
+                onPressed: () async {
+                  await GallerySaver.saveImage(
+                      ApiEndPoints.imageBaseUrl + imagePath);
+                  log('Image saved');
+                   ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('The image is downloaded')));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary),
                 child: Text(
                   'Download',
-                  style: TextStyleHelper.subtitle17.copyWith(color: Colors.white),
+                  style:
+                      TextStyleHelper.subtitle17.copyWith(color: Colors.white),
                 ))
           ],
         ),
