@@ -36,9 +36,13 @@ class CustomGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index < popularPeopleData.length) {
           return InkWell(
-            onTap: () => AppRoutes.pushNamedNavigator(
-                routeName: Routes.personDetails,
-                arguments: popularPeopleData[index].name),
+            onTap: () {
+              /* BlocProvider.of<PersonDetailsCubit>(context)
+                  .getPersonDetails(personId: popularPeopleData[index].id!); */
+              AppRoutes.pushNamedNavigator(
+                  routeName: Routes.personDetails,
+                  arguments: popularPeopleData[index].id!);
+            },
             child: Container(
                 width: MediaQueryHelper.width,
                 padding: EdgeInsets.only(bottom: 4.r),
