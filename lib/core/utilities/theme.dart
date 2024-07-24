@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme = ThemeData(
    
     iconTheme: const IconThemeData(color: Colors.black),
     scaffoldBackgroundColor: Colors.white,

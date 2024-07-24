@@ -31,7 +31,7 @@ void main() {
     //assert
     final expectedState = [
       PopularPeopleLoading(),
-      PopularPeopleLoaded(popularPeople: popularPeopleData)
+      PopularPeopleLoaded(popularPeopleData: popularPeopleData.results!)
     ];
     expectLater(popularPeopleCubit.stream, emitsInOrder(expectedState));
     //act

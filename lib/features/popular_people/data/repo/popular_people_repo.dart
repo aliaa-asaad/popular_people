@@ -1,21 +1,25 @@
+import 'dart:developer';
+
+import 'package:dartz/dartz.dart';
 import 'package:popular_people/core/handlers/error_handler/exceptions_handler.dart';
 import 'package:popular_people/core/handlers/error_handler/failure.dart';
 import 'package:popular_people/core/network/network_info.dart';
 import 'package:popular_people/features/popular_people/data/data_source/popular_people_local_data_source.dart';
 import 'package:popular_people/features/popular_people/data/data_source/popular_people_remote_data_source.dart';
 import 'package:popular_people/features/popular_people/data/models/popular_people_model.dart';
-import 'package:dartz/dartz.dart';
 
 abstract class PopularPeopleRepo {
   Future<Either<Failure, PopularPeopleModel>> getPopularPeople(
-      { required Map<String, dynamic> query});
+      {required Map<String, dynamic> query});
 }
 
 class PopularPeopleRepoImpl extends PopularPeopleRepo {
   final PopularPeopleRemoteDataSource remoteDataSource;
   final NetworkInfo networkInfo;
   final PopularPeopleLocalDataSource localDataSource;
-  PopularPeopleRepoImpl({required this.networkInfo,required this.localDataSource,
+  PopularPeopleRepoImpl(
+      {required this.networkInfo,
+      required this.localDataSource,
       required this.remoteDataSource});
 
   @override
@@ -23,7 +27,8 @@ class PopularPeopleRepoImpl extends PopularPeopleRepo {
       {required Map<String, dynamic> query}) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDataSource.get( query);
+        log('query: $query');
+        final result = await remoteDataSource.get(query);
         return Right(result);
       } on ServerException {
         return Left(ServerFailure());
@@ -37,5 +42,4 @@ class PopularPeopleRepoImpl extends PopularPeopleRepo {
       }
     }
   }
-  
 }
