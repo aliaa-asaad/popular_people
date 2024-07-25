@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedKeys {
   String isLogin = "IS_LOGIN";
-
+String popularPeople = "POPULAR_PEOPLE";
   String user = "USER";
   String token = "TOKEN";
   String rememberMe = "REMEMBER_ME";

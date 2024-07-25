@@ -29,13 +29,16 @@ class PopularPeopleRepoImpl extends PopularPeopleRepo {
       try {
         log('query: $query');
         final result = await remoteDataSource.get(query);
+
+        await localDataSource.cachePopularPeople(result);
+        
         return Right(result);
       } on ServerException {
         return Left(ServerFailure());
       }
     } else {
       try {
-        final result = await localDataSource.getPopularPeople();
+        final result = await localDataSource.getCachedPopularPeople();
         return Right(result);
       } on EmptyCachedException {
         return Left(EmptyCachedFailure());

@@ -48,7 +48,8 @@ class MockPopularPeopleLocalDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.PopularPeopleModel> getPopularPeople() => (super.noSuchMethod(
+  _i4.Future<_i2.PopularPeopleModel> getCachedPopularPeople() =>
+      (super.noSuchMethod(
         Invocation.method(
           #getPopularPeople,
           [],
