@@ -3,14 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i6;
 
+import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:popular_people/core/network/network_info.dart' as _i6;
+import 'package:popular_people/core/network/network_info.dart' as _i8;
 import 'package:popular_people/features/popular_people/data/data_source/popular_people_local_data_source.dart'
-    as _i3;
-import 'package:popular_people/features/popular_people/data/data_source/popular_people_remote_data_source.dart'
     as _i5;
+import 'package:popular_people/features/popular_people/data/data_source/popular_people_remote_data_source.dart'
+    as _i7;
+import 'package:popular_people/features/popular_people/data/models/images_model.dart'
+    as _i4;
 import 'package:popular_people/features/popular_people/data/models/popular_people_model.dart'
     as _i2;
 
@@ -38,71 +41,123 @@ class _FakePopularPeopleModel_0 extends _i1.SmartFake
         );
 }
 
+class _FakeUnit_1 extends _i1.SmartFake implements _i3.Unit {
+  _FakeUnit_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeImages_2 extends _i1.SmartFake implements _i4.Images {
+  _FakeImages_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [PopularPeopleLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPopularPeopleLocalDataSource extends _i1.Mock
-    implements _i3.PopularPeopleLocalDataSource {
+    implements _i5.PopularPeopleLocalDataSource {
   MockPopularPeopleLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.PopularPeopleModel> getCachedPopularPeople() =>
+  _i6.Future<_i2.PopularPeopleModel> getCachedPopularPeople() =>
       (super.noSuchMethod(
         Invocation.method(
-          #getPopularPeople,
+          #getCachedPopularPeople,
           [],
         ),
         returnValue:
-            _i4.Future<_i2.PopularPeopleModel>.value(_FakePopularPeopleModel_0(
+            _i6.Future<_i2.PopularPeopleModel>.value(_FakePopularPeopleModel_0(
           this,
           Invocation.method(
-            #getPopularPeople,
+            #getCachedPopularPeople,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.PopularPeopleModel>);
+      ) as _i6.Future<_i2.PopularPeopleModel>);
+
+  @override
+  _i6.Future<_i3.Unit> cachePopularPeople(
+          _i2.PopularPeopleModel? popularPeopleModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #cachePopularPeople,
+          [popularPeopleModel],
+        ),
+        returnValue: _i6.Future<_i3.Unit>.value(_FakeUnit_1(
+          this,
+          Invocation.method(
+            #cachePopularPeople,
+            [popularPeopleModel],
+          ),
+        )),
+      ) as _i6.Future<_i3.Unit>);
 }
 
 /// A class which mocks [PopularPeopleRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPopularPeopleRemoteDataSource extends _i1.Mock
-    implements _i5.PopularPeopleRemoteDataSource {
+    implements _i7.PopularPeopleRemoteDataSource {
   MockPopularPeopleRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.PopularPeopleModel> get(Map<String, dynamic>? query) =>
+  _i6.Future<_i2.PopularPeopleModel> get(Map<String, dynamic>? query) =>
       (super.noSuchMethod(
         Invocation.method(
           #get,
           [query],
         ),
         returnValue:
-            _i4.Future<_i2.PopularPeopleModel>.value(_FakePopularPeopleModel_0(
+            _i6.Future<_i2.PopularPeopleModel>.value(_FakePopularPeopleModel_0(
           this,
           Invocation.method(
             #get,
             [query],
           ),
         )),
-      ) as _i4.Future<_i2.PopularPeopleModel>);
+      ) as _i6.Future<_i2.PopularPeopleModel>);
+
+  @override
+  _i6.Future<_i4.Images> getImages() => (super.noSuchMethod(
+        Invocation.method(
+          #getImages,
+          [],
+        ),
+        returnValue: _i6.Future<_i4.Images>.value(_FakeImages_2(
+          this,
+          Invocation.method(
+            #getImages,
+            [],
+          ),
+        )),
+      ) as _i6.Future<_i4.Images>);
 }
 
 /// A class which mocks [NetworkInfo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNetworkInfo extends _i1.Mock implements _i6.NetworkInfo {
+class MockNetworkInfo extends _i1.Mock implements _i8.NetworkInfo {
   MockNetworkInfo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<bool> get isConnected => (super.noSuchMethod(
+  _i6.Future<bool> get isConnected => (super.noSuchMethod(
         Invocation.getter(#isConnected),
-        returnValue: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 }
