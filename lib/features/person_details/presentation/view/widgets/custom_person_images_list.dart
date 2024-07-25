@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:popular_people/core/config/end_points.dart';
+import 'package:popular_people/core/routing/navigator.dart';
+import 'package:popular_people/core/routing/routes.dart';
 import 'package:popular_people/features/person_details/data/models/pereson_images_model.dart';
 
 class CustomPersonImagesList extends StatelessWidget {
@@ -28,7 +30,10 @@ class CustomPersonImagesList extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                AppRoutes.navigatorState.currentState!
+                    .pushNamed(Routes.selectedImage, arguments: images[index].filePath);
+              },
               child: Container(
                 width: 130,
                 height: 200,

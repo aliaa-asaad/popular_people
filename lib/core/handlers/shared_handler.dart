@@ -4,14 +4,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedKeys {
   String isLogin = "IS_LOGIN";
-
+  String popularPeople = "POPULAR_PEOPLE";
+  String imageBaseUrl = "IMAGE_BASE_URL";
   String user = "USER";
   String token = "TOKEN";
   String rememberMe = "REMEMBER_ME";
   String lang = "LANG";
   String theme = "THEME";
   String isNotFirstTime = "Is_NOT_FIRST_TIME";
-String driver='DRIVER';
+  String driver = 'DRIVER';
   String userType = "USER_TYPE";
 }
 
@@ -22,7 +23,6 @@ class SharedHandler {
   final SharedPreferences sharedPreferences;
 
   SharedHandler({required this.sharedPreferences});
- 
 
   Future<void> setData(String key, {dynamic value}) async {
     if (value is String) {
@@ -53,7 +53,7 @@ class SharedHandler {
         return sharedPreferences.getBool(key) ?? false;
       case ValueType.map:
         String? value = sharedPreferences.getString(key);
-        Map<String,dynamic> data = value != null ? jsonDecode(value) : {};
+        Map<String, dynamic> data = value != null ? jsonDecode(value) : {};
         return data;
       default:
         return "";

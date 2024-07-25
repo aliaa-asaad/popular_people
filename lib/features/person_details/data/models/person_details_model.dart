@@ -1,4 +1,7 @@
-class PersonDetailsModel {
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
+
+class PersonDetailsModel with EquatableMixin {
   String? biography;
   String? birthday;
   int? id;
@@ -36,5 +39,17 @@ class PersonDetailsModel {
     
     data['profile_path'] = profilePath;
     return data;
+  }
+
+  @override
+  List<Object> get props {
+    return [
+      biography??'',
+      birthday??'',
+      id??1696016,
+      knownForDepartment??'',
+      name??'',
+      profilePath??'',
+    ];
   }
 }
