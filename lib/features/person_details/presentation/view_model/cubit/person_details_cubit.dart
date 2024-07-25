@@ -9,7 +9,7 @@ import 'package:popular_people/features/person_details/data/repo/person_details_
 part 'person_details_state.dart';
 
 class PersonDetailsCubit extends Cubit<PersonDetailsState> {
-  PersonDetailsCubit({required this.personDetailsRepo})
+  PersonDetailsCubit({required this.personDetailsRepo,})
       : super(PersonDetailsInitial());
 
   final PersonDetailsRepo personDetailsRepo;

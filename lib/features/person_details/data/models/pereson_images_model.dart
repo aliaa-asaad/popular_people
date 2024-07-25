@@ -1,4 +1,7 @@
-class PersonImagesModel {
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
+
+class PersonImagesModel with EquatableMixin {
   int? id;
   List<Profiles>? profiles;
 
@@ -22,9 +25,12 @@ class PersonImagesModel {
     }
     return data;
   }
+
+  @override
+  List<Object> get props => [id??1696016, profiles??[]];
 }
 
-class Profiles {
+class Profiles with EquatableMixin {
   String? filePath;
 
   Profiles({
@@ -42,4 +48,7 @@ class Profiles {
 
     return data;
   }
+
+  @override
+  List<Object> get props => [filePath??''];
 }
