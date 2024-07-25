@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:popular_people/core/app_widgets/custom_back_icon_button.dart';
 import 'package:popular_people/core/config/end_points.dart';
 
 class CustomPersonDetailsImage extends StatelessWidget {
@@ -15,16 +16,7 @@ class CustomPersonDetailsImage extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                  Theme.of(context).colorScheme.primary),
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
+          CustomBackIconButton(),
           const SizedBox(
             width: 4,
           ),
