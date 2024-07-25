@@ -8,6 +8,8 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:popular_people/core/handlers/error_handler/failure.dart' as _i5;
+import 'package:popular_people/features/popular_people/data/models/images_model.dart'
+    as _i7;
 import 'package:popular_people/features/popular_people/data/models/popular_people_model.dart'
     as _i6;
 import 'package:popular_people/features/popular_people/data/repo/popular_people_repo.dart'
@@ -64,4 +66,21 @@ class MockPopularPeopleRepo extends _i1.Mock implements _i3.PopularPeopleRepo {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.PopularPeopleModel>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i7.Images>> getPopularPeopleImages() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPopularPeopleImages,
+          [],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i7.Images>>.value(
+            _FakeEither_0<_i5.Failure, _i7.Images>(
+          this,
+          Invocation.method(
+            #getPopularPeopleImages,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i7.Images>>);
 }
