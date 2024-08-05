@@ -5,7 +5,7 @@
 - when user chooses a person,he/she moves to a new screen with the basic info of the person and a gridview of his/her images
 - when user selects an image, he/she moves to a new screen with the image im its original size and can download it on the phone
 
-## App was build with:
+## App was built with:
 - state management: cubit
 - network: dio, shared preferences
 - arch: MVVM and clean arch
