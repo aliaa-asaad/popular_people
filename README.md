@@ -13,7 +13,7 @@
 
 ## App Problems:
 - the pagination ui should be handled with the gridview
-- there is a dublication in the data while getting the new data ( i don't no the reason as the logs refer to it works as logic)
+- there is a dublication in the data while getting the new data ( i don't know the reason as the logs refer to it works as logic)
 - can't store the images in the local database
 - there is error 404 when i try to get images data from configration api and don't know the reason
 
